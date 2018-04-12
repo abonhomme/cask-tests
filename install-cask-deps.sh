@@ -16,10 +16,10 @@ auth_application_default_credentials () {
 command -v docker >/dev/null 2>&1 && echo "Already installed" || (brew cask install docker && open /Applications/Docker.app/)
 command -v gcloud >/dev/null 2>&1 && echo "Already installed" || brew cask install google-cloud-sdk
 
-# gcloud config configurations list | awk '{ print $1}' | grep default >/dev/null 2>&1 || gcloud config configurations create default 
-# echo
-# # Only ask for gcloud sdk and application default credential auth if necessary.
-# gcloud config list | grep account >/dev/null 2>&1 && echo "Already authenticated with gcloud SDK" || auth_gcloud_sdk
-# ls ~/.config/gcloud/application_default_credentials.json >/dev/null 2>&1 && echo "Already authenticated with GCP application default credential" || auth_application_default_credentials
+gcloud config configurations list | awk '{ print $1}' | grep default >/dev/null 2>&1 || gcloud config configurations create default 
+
+# Only ask for gcloud sdk and application default credential auth if necessary.
+gcloud config list | grep account >/dev/null 2>&1 && echo "Already authenticated with gcloud SDK" || auth_gcloud_sdk
+ls ~/.config/gcloud/application_default_credentials.json >/dev/null 2>&1 && echo "Already authenticated with GCP application default credential" || auth_application_default_credentials
 
 

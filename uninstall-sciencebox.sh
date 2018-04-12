@@ -1,2 +1,1 @@
-brew cask uninstall google-cloud-sdk
-brew uninstall sciencebox
+/usr/local/bin/brew uninstall sciencebox
